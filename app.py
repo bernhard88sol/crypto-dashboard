@@ -52,7 +52,8 @@ else:
     mtpi_color = "orange"
 
 # --- 3. SHITCOIN STATUS ---
-misc = df_misc.sort_values("created_at").iloc[-1]
+misc = df_misc[df_misc["id"] == df_misc["id"].max()].iloc[0]   # oder einfach:
+# misc = df_misc.iloc[0]    # (wenn immer nur ein Eintrag vorhanden ist)
 shitcoin_val = misc["TOTALE100"]
 shitcoin_status = "Shitcoins Grün" if shitcoin_val == 1 else "Shitcoins Rot"
 shitcoin_color = "green" if shitcoin_val == 1 else "red"
