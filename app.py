@@ -52,7 +52,11 @@ else:
     mtpi_color = "orange"
 
 # --- 3. SHITCOIN STATUS ---
-misc = df_misc.iloc[0]
+if not df_misc.empty:
+    misc = df_misc.iloc[0]
+    # Zugriff wie gewohnt
+else:
+    st.warning("MISC-Tabelle ist leer!")
 shitcoins_status = misc["TOTALE100"]
 shitcoin_val = misc["TOTALE100"]
 shitcoin_status = "Shitcoins Grün" if shitcoin_val == 1 else "Shitcoins Rot"
